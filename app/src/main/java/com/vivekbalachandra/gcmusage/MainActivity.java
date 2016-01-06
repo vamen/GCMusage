@@ -2,6 +2,7 @@ package com.vivekbalachandra.gcmusage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tv;
+    TextView mtoken;
+    Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Button btn= (Button) findViewById(R.id.button);
-        tv= (TextView) findViewById(R.id.token);
+        mtoken= (TextView) findViewById(R.id.token);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
                 startService(in);
             }
         });
-        tv.setOnClickListener(new View.OnClickListener() {
+        mtoken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv.setText(RegistrationIntentService.token);
+                mtoken.setText(RegistrationIntentService.token);
             }
         });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
